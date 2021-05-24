@@ -5,11 +5,10 @@
         <th>Name</th>
         <th>Value</th>
     </tr>
-
+    {{#each dataList}}
     <tr>
-        {{#each dataList}}
-            <td>{{this.name}}</td>
-            <td>{{this.value}}</td>
-        {{/each}}
+        <td>{{this.name}}</td>
+        <td>{{this.value}}</td>
     </tr>
+    {{/each}}
 </table>
