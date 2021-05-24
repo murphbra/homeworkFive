@@ -8,7 +8,7 @@ app.set('port', 5461);
 app.get('/',function(req,res){
   var parameters = [];
   for (var x in req.query){
-    parameters.push('name':x, 'value':req.query[x])
+    parameters.push({'name':x, 'value':req.query[x]})
   }
   var input = {};
   input.dataList = parameters;
