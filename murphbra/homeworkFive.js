@@ -1,15 +1,23 @@
 var express = require('express');
-
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
-
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 5461);
 
 app.get('/',function(req,res){
-  res.render('get-page.handlebars') //We can omit the .handlebars extension as we do below
+  var parameters = [];
+  for (var x in req.query){
+    parameters.push('name':x, 'value':req.query[x])
+  }
+  var input = {};
+  input.dataList = parameters;
+  res.render('get-page.handlebars', input ) 
 });
+
+app.post('/', function(req,res){
+  res.render("post-page.handlebars")
+})
 
 
 app.use(function(req,res){
