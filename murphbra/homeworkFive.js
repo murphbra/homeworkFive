@@ -12,7 +12,7 @@ app.get('/',function(req,res){
   }
   var context = {};
   context.dataList = qParams;
-  res.render('get-page', context);
+  res.render('get-page', context.dataList);
 });
 
 app.post('/', function(req,res){
