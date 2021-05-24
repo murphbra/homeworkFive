@@ -6,14 +6,15 @@ app.set('view engine', 'handlebars');
 app.set('port', 5461);
 
 app.get('/',function(req,res){
-  var parameters = [];
+  var qParams = [];
   for (var x in req.query){
-    parameters.push({'name':x, 'value':req.query[x]})
+    qParams.push({'name':x, 'value':req.query[x]})
   }
   var context = {};
-  context.dataList = parameters;
-  res.render('get-page.handlebars', context ) 
+  context.dataList = qParams;
+  res.render('get-page', context);
 });
+
 app.post('/', function(req,res){
   res.render("post-page.handlebars")
 })
