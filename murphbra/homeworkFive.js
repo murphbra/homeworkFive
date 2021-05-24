@@ -10,11 +10,10 @@ app.get('/',function(req,res){
   for (var x in req.query){
     parameters.push({'name':x, 'value':req.query[x]})
   }
-  var input = {};
-  input.dataList = parameters;
-  res.render('get-page.handlebars', input ) 
+  var context = {};
+  context.dataList = parameters;
+  res.render('get-page.handlebars', context ) 
 });
-
 app.post('/', function(req,res){
   res.render("post-page.handlebars")
 })
