@@ -6,14 +6,10 @@
         <th>Value</th>
     </tr>
 
-    {{#each params}}
-        <tr>
-            <td>
-                {{this.name}}
-            </td>
-            <td>
-                {{this.value}}
-            </td>
-        </tr>
-    {{/each}}
+    <tr>
+        {{#each context.dataList}}
+            <td>{{this.name}}</td>
+            <td>{{this.value}} </td>
+        {{/each}}
+    </tr>
 </table>
