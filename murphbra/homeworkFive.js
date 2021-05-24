@@ -4,6 +4,9 @@ var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 5461);
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.get('/',function(req,res){
   var qParams = [];
@@ -16,7 +19,20 @@ app.get('/',function(req,res){
 });
 
 app.post('/', function(req,res){
-  res.render("post-page.handlebars")
+  var qParams = [];
+  for (var x in req.query){
+    qParams.push({'name':x, 'value':req.query[x]})
+  }
+  var context = {};
+  context.dataList = qParams;
+
+  var bParams = [];
+  for (var b in req.body){
+    bParams.push({'name':b,'value':req.body[b]})
+  }
+  context.dataList2 = bParams;
+
+  res.render("post-page", context)
 })
 
 
