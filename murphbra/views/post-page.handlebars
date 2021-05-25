@@ -13,4 +13,18 @@
     {{/each}}
 </table>
 
-
+</br>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Value</th>
+    </tr>
+    {{#if dataList2}}
+        {{#each dataList2}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.value}}</td>
+            </tr>
+        {{/each}}
+    {{/if}}
+</table>
