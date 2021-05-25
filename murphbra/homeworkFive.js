@@ -9,44 +9,41 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/',function(req,res){
-  var qParams = [];
+  var queryInput = [];
   for (var x in req.query){
-    qParams.push({'name':x, 'value':req.query[x]})
+    queryInput.push({'name':x, 'value':req.query[x]})
   }
-  var context = {};
-  context.dataList = qParams;
-  res.render('get-page', context);
+  var input = {};
+  input.dataList = queryInput;
+  res.render('get-page', input);
 });
 
 app.post('/', function(req,res){
-  var qParams = [];
+  var queryInput = [];
   for (var x in req.query){
-    qParams.push({'name':x, 'value':req.query[x]})
+    queryInput.push({'name':x, 'value':req.query[x]})
   }
-  var context = {};
-  context.dataList = qParams;
+  var input = {};
+  input.dataList = qParams;
 
-  var bParams = [];
+  var bodyInput = [];
   for (var b in req.body){
-    bParams.push({'name':b,'value':req.body[b]})
+    bodyInput.push({'name':b,'value':req.body[b]})
   }
-  context.dataList2 = bParams;
-  res.render("post-page", context)
+  input.dataList2 = bodyInput;
+  res.render("post-page", input)
 })
-
 
 app.use(function(req,res){
   res.status(404);
   res.render('404');
 });
-
 app.use(function(err, req, res, next){
   console.error(err.stack);
   res.type('plain/text');
   res.status(500);
   res.render('500');
 });
-
 app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
