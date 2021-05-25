@@ -26,12 +26,11 @@ app.post('/', function(req,res){
   var context = {};
   context.dataList = qParams;
 
-  //var bParams = [];
-  //for (var b in req.body){
-    //bParams.push({'name':b,'value':req.body[b]})
-  //}
-  //context.dataList2 = bParams;
-
+  var bParams = [];
+  for (var b in req.body){
+    bParams.push({'name':b,'value':req.body[b]})
+  }
+  context.dataList2 = bParams;
   res.render("post-page", context)
 })
 
