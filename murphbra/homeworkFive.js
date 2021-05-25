@@ -24,7 +24,7 @@ app.post('/', function(req,res){
     queryInput.push({'name':x, 'value':req.query[x]})
   }
   var input = {};
-  input.dataList = qParams;
+  input.dataList = queryInput;
 
   var bodyInput = [];
   for (var b in req.body){
